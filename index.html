@@ -5,15 +5,55 @@
     <title>Hello, VRGallery</title>
     <meta name="description" content="Hello, VRGallery">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    <script>
+        AFRAME.registerShader('my-custom', {
+          // The schema declares any parameters for the shader.
+          schema: {
+            tex: {type:'map', is:'uniform'},
+          },
+          
+          // Setting raw to true uses THREE.RawShaderMaterial instead of ShaderMaterial,
+
+          raw: false,
+          
+          vertexShader:
+        `
+          varying vec2 vUV;
+
+          void main(void) {
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            vUV = uv;
+          }
+        `
+        ,
+          fragmentShader: 
+        `
+          precision mediump float;
+          uniform sampler2D tex;
+          varying vec2 vUV;
+
+          void main () {
+
+            vec3 color = texture2D(tex,uv).rgb;
+            gl_FragColor = vec4(color, 1.0);
+          }
+        `
+        });
+    </script>
+
   </head>
   <body>
     <a-scene background="color: #FAFAFA">
 
       <a-assets>
         <a-asset-item id="gallery" src="/models/gallery.glb"></a-asset-item>
+        <img id="texture1" src="/models/lightmap_ceiling.png">
+        <img id="texture2" src="/models/lightmap_model.png">
+        <img id="texture3" src="/models/lightmap_walls.png">
       </a-assets>
 
-      <a-entity gltf-model="#gallery"></a-entity>
+      <a-entity gltf-model="#gallery" material="shader:my-custom; tex:#texture1">></a-entity>
     </a-scene>
   </body>
 </html>
