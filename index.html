@@ -7,16 +7,12 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 
     <script>
-        AFRAME.registerShader('my-custom', {
-          // The schema declares any parameters for the shader.
-          schema: {
-            tex: {type:'map', is:'uniform'},
-          },
-          
-          // Setting raw to true uses THREE.RawShaderMaterial instead of ShaderMaterial,
-
+      
+AFRAME.registerShader('my-custom', {
+  schema: {
+    tex: {type: 'map', is: 'uniform'}
+  },
           raw: false,
-          
           vertexShader:
         `
           varying vec2 vUV;
@@ -35,27 +31,56 @@
 
           void main () {
 
-            vec3 color = texture2D(tex,uv).rgb;
+            vec3 color = texture2D(tex,vUV).rgb;
             gl_FragColor = vec4(color, 1.0);
           }
         `
-        });
+});
+
     </script>
 
   </head>
   <body>
-    <a-scene background="color: #FAFAFA">
+    <a-scene stats = "true" background="color: #FAFAFA" antialias="true">
 
       <a-assets>
-        <a-asset-item id="gallery" src="/models/gallery.glb"></a-asset-item>
-        <img id="texture1" src="/models/lightmap_ceiling.png">
-        <img id="texture2" src="/models/lightmap_model.png">
-        <img id="texture3" src="/models/lightmap_walls.png">
+        <a-asset-item id="gallery_walls" src="https://raw.githubusercontent.com/martinsh/vr-gallery/master/models/gallery_walls.obj"></a-asset-item>
+        <a-asset-item id="gallery_ceiling" src="https://raw.githubusercontent.com/martinsh/vr-gallery/master/models/gallery_ceiling.obj"></a-asset-item>
+        <a-asset-item id="gallery_model" src="https://raw.githubusercontent.com/martinsh/vr-gallery/master/models/gallery_model.obj"></a-asset-item>
+        <a-asset-item id="gallery_emit" src="https://raw.githubusercontent.com/martinsh/vr-gallery/master/models/gallery_emit.obj"></a-asset-item>
+
+        <a-asset-item id="gallery" src="https://raw.githubusercontent.com/martinsh/vr-gallery/master/models/gallery.glb"></a-asset-item>
+        <img id="texture1" src="https://raw.githubusercontent.com/martinsh/vr-gallery/master/models/lightmap_ceiling.png" crossorigin="anonymous">
+        <img id="texture2" src="https://raw.githubusercontent.com/martinsh/vr-gallery/master/models/lightmap_model.png" crossorigin="anonymous">
+        <img id="texture3" src="https://raw.githubusercontent.com/martinsh/vr-gallery/master/models/lightmap_walls.png" crossorigin="anonymous">
       </a-assets>
+      
+          <!-- Camera -->
+    <a-entity camera
+              look-controls
+              wasd-controls
+              position="0 1.5 5"></a-entity>
 
-      <a-entity light="type: hemisphere; color: #fff; groundColor: #fff; intensity: 1"></a-entity>
+      <a-entity
+          geometry="primitive: plane; width: 2; height: 2;" rotation="-90 0 0" position="0 0.1 -3"
+          material="shader:my-custom; tex:#texture2 " ></a-entity>
 
-      <a-entity gltf-model="#gallery"></a-entity>
+      <a-entity 
+          obj-model="obj: #gallery_walls" position="0 0 0"
+          material="shader:my-custom; tex:#texture3 "></a-entity>
+      
+      <a-entity 
+          obj-model="obj: #gallery_ceiling" position="0 0 0"
+          material="shader:my-custom; tex:#texture1 "></a-entity>
+      
+      <a-entity 
+          obj-model="obj: #gallery_model" position="0 0 0"
+          material="shader:my-custom; tex:#texture2 "></a-entity>
+      
+      <a-entity 
+          obj-model="obj: #gallery_emit" position="0 0 0"
+          material="shader:flat;  "></a-entity>
+      
     </a-scene>
   </body>
 </html>
