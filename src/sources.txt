@@ -1,0 +1,3 @@
+https://github.com/donmccurdy/aframe-extras
+https://github.com/digaverse/aframe-resonance-audio-component
+https://github.com/donmccurdy/aframe-fonts
