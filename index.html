@@ -61,10 +61,10 @@ AFRAME.registerShader('my-custom', {
       
       <a-resonance-audio-room
         visualize="true"
-        position="0 30 0"
-        width="200"
+        position="0 30 -5"
+        width="290"
         height="60"
-        depth="80"
+        depth="90"
         ambisonic-order="3"
         speed-of-sound="343"
         left="brick-bare"
@@ -75,10 +75,12 @@ AFRAME.registerShader('my-custom', {
         up="acoustic-ceiling-tiles">
         <a-resonance-audio-src
           visualize="true"
-          position="0 3 -5"
+          position="0 -27 0"
           src="#track"
           loop="true"
-          autoplay="true"></a-resonance-audio-src>
+          autoplay="true">
+            
+        </a-resonance-audio-src>
       </a-resonance-audio-room>
       
           <!-- Camera -->
