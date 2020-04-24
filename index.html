@@ -59,6 +59,41 @@ AFRAME.registerShader('my-custom', {
         <img id="texture3" src="/models/lightmap_walls.png" crossorigin="anonymous">
       </a-assets>
       
+    
+          <!-- Camera -->
+
+      <a-entity
+          geometry="primitive: plane; width: 2; height: 2;" rotation="-90 0 0" position="0 0.1 -3"
+          material="shader:my-custom; tex:#texture2 " ></a-entity>
+
+      <a-entity 
+          obj-model="obj: #gallery_walls" position="0 0 -5"
+          material="shader:my-custom; tex:#texture3 "></a-entity>
+      
+      <a-entity 
+          obj-model="obj: #gallery_ceiling" position="0 0 -5"
+          material="shader:my-custom; tex:#texture1 "></a-entity>
+      
+      <a-entity 
+          obj-model="obj: #gallery_model" position="0 0 -5"
+          material="shader:my-custom; tex:#texture2 "></a-entity>
+      
+      <a-entity 
+          obj-model="obj: #gallery_emit" position="0 0 -5"
+          material="shader:flat;  "></a-entity>
+
+      <script>
+      var piano = document.getElementById('track');
+    
+      if (piano.paused){
+        setInterval(pianoplay, 2000);
+      }
+        
+      function pianoplay() {
+        piano.play();
+      }
+      </script>
+      
       <a-resonance-audio-room
         visualize="true"
         position="0 30 -5"
@@ -86,46 +121,11 @@ AFRAME.registerShader('my-custom', {
           >
         </a-resonance-audio-src>
       </a-resonance-audio-room>
-      
-          <!-- Camera -->
-
-      <a-entity
-          geometry="primitive: plane; width: 2; height: 2;" rotation="-90 0 0" position="0 0.1 -3"
-          material="shader:my-custom; tex:#texture2 " ></a-entity>
-
-      <a-entity 
-          obj-model="obj: #gallery_walls" position="0 0 -5"
-          material="shader:my-custom; tex:#texture3 "></a-entity>
-      
-      <a-entity 
-          obj-model="obj: #gallery_ceiling" position="0 0 -5"
-          material="shader:my-custom; tex:#texture1 "></a-entity>
-      
-      <a-entity 
-          obj-model="obj: #gallery_model" position="0 0 -5"
-          material="shader:my-custom; tex:#texture2 "></a-entity>
-      
-      <a-entity 
-          obj-model="obj: #gallery_emit" position="0 0 -5"
-          material="shader:flat;  "></a-entity>
-
-
-      
 
       
     </a-scene>
 
-      <script>
-      var piano = document.getElementById('track');
-    
-      if (piano.paused){
-        setInterval(pianoplay, 2000);
-      }
-        
-      function pianoplay() {
-        piano.play();
-      }
-      </script>
+
 
 
   </body>
