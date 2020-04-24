@@ -90,7 +90,7 @@ AFRAME.registerShader('my-custom', {
           if (piano.paused){
             
             try{
-              piano(play);
+              piano.play();
               console.log("Video is playing");
             }catch(e){
               console.warn(e.message);
