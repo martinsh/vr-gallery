@@ -51,7 +51,7 @@ AFRAME.registerShader('my-custom', {
         <a-asset-item id="gallery_model" src="/models/gallery_model.obj"></a-asset-item>
         <a-asset-item id="gallery_emit" src="/models/gallery_emit.obj"></a-asset-item>
         
-        <audio id="track" src="/sounds/piano_stereo.wav" crossorigin="anonymous"></audio>
+        <audio id="track" src="/sounds/piano_stereo.wav" crossorigin="anonymous" webkit-playsinline></audio>
 
         <a-asset-item id="gallery" src="/models/gallery.glb"></a-asset-item>
         <img id="texture1" src="/models/lightmap_ceiling.png" crossorigin="anonymous">
@@ -78,22 +78,10 @@ AFRAME.registerShader('my-custom', {
           position="0 -27 0"
           src="#track"
           loop="true"
-          autoplay="false">
+          >
             
         </a-resonance-audio-src>
       </a-resonance-audio-room>
-
-      <script>
-      var piano = document.getElementById('track');
-    
-      if (piano.paused){
-        setInterval(pianoplay, 2000);
-      }
-        
-      function pianoplay() {
-        piano.play();
-      }
-      </script>
       
           <!-- Camera -->
 
@@ -116,6 +104,18 @@ AFRAME.registerShader('my-custom', {
       <a-entity 
           obj-model="obj: #gallery_emit" position="0 0 -5"
           material="shader:flat;  "></a-entity>
+
+      <script>
+      var piano = document.getElementById('track');
+    
+      if (piano.paused){
+        setInterval(pianoplay, 2000);
+      }
+        
+      function pianoplay() {
+        piano.play();
+      }
+      </script>
       
 
       
