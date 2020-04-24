@@ -67,19 +67,23 @@ AFRAME.registerShader('my-custom', {
         depth="90"
         ambisonic-order="3"
         speed-of-sound="343"
-        left="brick-bare"
-        right="curtain-heavy"
-        front="plywood-panel"
-        back="glass-thin"
-        down="parquet-on-concrete"
+        left="concrete-block-painted"
+        right="concrete-block-painted"
+        front="concrete-block-painted"
+        back="concrete-block-painted"
+        down="concrete-block-painted"
         up="acoustic-ceiling-tiles">
         <a-resonance-audio-src
           visualize="true"
           position="0 -27 0"
           src="#track"
           loop="true"
+          autoplay=c
+          gain="1"
+          directivityPattern="0 1"
+          rolloff="logarithmic"
+          
           >
-            
         </a-resonance-audio-src>
       </a-resonance-audio-room>
       
@@ -105,20 +109,24 @@ AFRAME.registerShader('my-custom', {
           obj-model="obj: #gallery_emit" position="0 0 -5"
           material="shader:flat;  "></a-entity>
 
+
+      
+
+      
+    </a-scene>
+
       <script>
       var piano = document.getElementById('track');
     
       if (piano.paused){
-        setInterval(pianoplay, 2000);
+        setInterval(pianoplay, 10000);
       }
         
       function pianoplay() {
         piano.play();
       }
       </script>
-      
 
-      
-    </a-scene>
+
   </body>
 </html>
