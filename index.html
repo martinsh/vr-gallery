@@ -85,7 +85,7 @@ AFRAME.registerShader('my-custom', {
       <script>
       var piano = document.getElementById('track');
     
-      ["click", "mousemove", "mouseover", "mousemove", "touchmove", "focus"].forEach((eventName)=>{
+      ["click"].forEach((eventName)=>{
         window.addEventListener(eventName, ()=>{
           if (piano.paused){
             
