@@ -78,10 +78,22 @@ AFRAME.registerShader('my-custom', {
           position="0 -27 0"
           src="#track"
           loop="true"
-          autoplay="true">
+          autoplay="false">
             
         </a-resonance-audio-src>
       </a-resonance-audio-room>
+
+      <script>
+      var piano = document.getElementById('track');
+    
+      if (piano.paused){
+        setInterval(pianoplay, 2000);
+      }
+        
+      function pianoplay() {
+        piano.play();
+      }
+      </script>
       
           <!-- Camera -->
 
