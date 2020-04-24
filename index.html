@@ -6,6 +6,8 @@
     <meta name="description" content="Hello, VRGallery">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="/src/aframe-resonance-audio-component.js"></script>
+    <script src="/src/aframe-extras.min.js"></script>
+    <script src="/src/aframe-teleport-controls.min.js"></script>
 
     <script>
       
@@ -61,6 +63,10 @@ AFRAME.registerShader('my-custom', {
       
     
           <!-- Camera -->
+
+      <!-- hand controls -->
+      <a-entity teleport-controls vive-controls="hand: left"></a-entity>
+      <a-entity teleport-controls="type: line" vive-controls="hand: right"></a-entity>
 
       <a-entity
           geometry="primitive: plane; width: 2; height: 2;" rotation="-90 0 0" position="0 0.1 -3"
