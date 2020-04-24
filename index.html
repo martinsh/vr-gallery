@@ -65,8 +65,7 @@ AFRAME.registerShader('my-custom', {
           <!-- Camera -->
 
       <!-- hand controls -->
-      <a-entity teleport-controls vive-controls="hand: left"></a-entity>
-      <a-entity teleport-controls="type: line" vive-controls="hand: right"></a-entity>
+      <a-entity teleport-controls touch-controls="hand: right"></a-entity>
 
       <a-entity
           geometry="primitive: plane; width: 2; height: 2;" rotation="-90 0 0" position="0 0.1 -3"
