@@ -92,8 +92,8 @@ AFRAME.registerShader('my-custom', {
             try{
               piano.play();
               console.log("Video is playing");
-            }catch(e){
-              console.warn(e.message);
+            }else{
+              console.warn("No user input yet");
             }
           }
         }); 
