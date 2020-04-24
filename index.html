@@ -7,7 +7,6 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="/src/aframe-resonance-audio-component.js"></script>
     <script src="/src/aframe-extras.min.js"></script>
-    <script src="/src/aframe-teleport-controls.min.js"></script>
 
     <script>
       
@@ -61,14 +60,7 @@ AFRAME.registerShader('my-custom', {
         <img id="texture3" src="/models/lightmap_walls.png" crossorigin="anonymous">
       </a-assets>
       
-    
-      <a-entity id="cameraRig">
-        <!-- camera -->
-        <a-entity id="head" camera wasd-controls look-controls></a-entity>
-        <!-- hand controls -->
-        <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
-        <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
-      </a-entity>
+  
 
       <a-entity
           geometry="primitive: plane; width: 2; height: 2;" rotation="-90 0 0" position="0 0.1 -3"
