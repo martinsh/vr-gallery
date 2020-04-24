@@ -85,15 +85,21 @@ AFRAME.registerShader('my-custom', {
       <script>
       var piano = document.getElementById('track');
     
-      if (piano.paused){
-        setInterval(pianoplay, 2000);
-      }
-        
-      function pianoplay() {
-        piano.play();
-      }
+      ["click", "mousemove", "mouseover", "mousemove", "touchmove", "focus"].forEach((eventName)=>{
+        window.addEventListener(eventName, ()=>{
+          if (piano.paused){
+            
+            try{
+              piano(play);
+              console.log("Video is playing");
+            }catch(e){
+              console.warn(e.message);
+            }
+          }
+        }); 
+      });
       </script>
-      
+
       <a-resonance-audio-room
         visualize="true"
         position="0 30 -5"
